@@ -29,40 +29,207 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pusheeeeeed the button this many times:',
+        body: Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/background/background_sunny.png"),
+              fit: BoxFit.cover,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        Column(children: [
+          Spacer(),
+          Column(
+            children: [
+              Text("Lyon", style: TextStyle(color: Colors.white, fontSize: 30)),
+              Text("26°", style: TextStyle(color: Colors.white, fontSize: 30)),
+              Text(""),
+              Text("Belles éclaircies",
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text("Max. 25°",
+                    style: TextStyle(color: Colors.white, fontSize: 30)),
+                Text(" | ",
+                    style: TextStyle(color: Colors.white, fontSize: 30)),
+                Text("Min. 12°",
+                    style: TextStyle(color: Colors.white, fontSize: 30))
+              ])
+            ],
+          ),
+          Spacer(),
+          Row(
+            children: [
+              Spacer(),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(0, 102, 255, 0.25),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: SizedBox(
+                    height: 100,
+                    width: 70,
+                    child: Column(children: [
+                      Spacer(),
+                      Text("Lun", style: TextStyle(color: Colors.white)),
+                      Text("25°", style: TextStyle(color: Colors.white)),
+                      Image(
+                        height: 40,
+                        width: 40,
+                        image: AssetImage("assets/icons/sun.png"),
+                      ),
+                      Spacer()
+                    ]),
+                  )),
+              Spacer(),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(0, 102, 255, 0.25),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: SizedBox(
+                    height: 100,
+                    width: 70,
+                    child: Column(children: [
+                      Spacer(),
+                      Text("Lun", style: TextStyle(color: Colors.white)),
+                      Text("25°", style: TextStyle(color: Colors.white)),
+                      Image(
+                        height: 40,
+                        width: 40,
+                        image: AssetImage("assets/icons/sun.png"),
+                      ),
+                      Spacer()
+                    ]),
+                  )),
+              Spacer(),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(0, 102, 255, 0.25),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: SizedBox(
+                    height: 100,
+                    width: 70,
+                    child: Column(children: [
+                      Spacer(),
+                      Text("Lun", style: TextStyle(color: Colors.white)),
+                      Text("25°", style: TextStyle(color: Colors.white)),
+                      Image(
+                        height: 40,
+                        width: 40,
+                        image: AssetImage("assets/icons/sun.png"),
+                      ),
+                      Spacer()
+                    ]),
+                  )),
+              Spacer(),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(0, 102, 255, 0.25),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: SizedBox(
+                    height: 100,
+                    width: 70,
+                    child: Column(children: [
+                      Spacer(),
+                      Text("Lun", style: TextStyle(color: Colors.white)),
+                      Text("25°", style: TextStyle(color: Colors.white)),
+                      Image(
+                        height: 40,
+                        width: 40,
+                        image: AssetImage("assets/icons/sun.png"),
+                      ),
+                      Spacer()
+                    ]),
+                  )),
+              Spacer(),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(0, 102, 255, 0.25),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: SizedBox(
+                    height: 100,
+                    width: 70,
+                    child: Column(children: [
+                      Spacer(),
+                      Text("Lun", style: TextStyle(color: Colors.white)),
+                      Text("25°", style: TextStyle(color: Colors.white)),
+                      Image(
+                        height: 40,
+                        width: 40,
+                        image: AssetImage("assets/icons/sun.png"),
+                      ),
+                      Spacer()
+                    ]),
+                  )),
+              Spacer(),
+            ],
+          ),
+          Spacer(),
+          Container(
+              height: 370,
+              width: 350,
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(0, 102, 255, 0.25),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              child: SizedBox(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Image(
+                            height: 24,
+                            width: 24,
+                            image: AssetImage("assets/icons/calendar.png")),
+                        Text("Météo sur 24h",
+                            style: TextStyle(
+                                color: Color.fromRGBO(130, 186, 251, 1),
+                                fontSize: 16))
+                      ],
+                    ),
+                    Container(
+                      height: 1,
+                      width: 330,
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(130, 186, 251, 100)),
+                    ),
+                    Row(
+                      children: [
+                        Text("8h"),
+                        Image(
+                            height: 24,
+                            width: 24,
+                            image: AssetImage("assets/icons/sun.png")),
+                        Text("24°")
+                      ],
+                    )
+                  ],
+                ),
+              )),
+          Spacer()
+        ]),
+      ],
+    ));
   }
 }
 //Le chibron
