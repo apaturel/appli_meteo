@@ -6,6 +6,20 @@ void main() {
   runApp(const MyApp());
 }
 
+/*@override
+  void initState() {
+    super.initState();
+    initialisation();
+  }
+
+  void initialisation() async {
+    getCityWeather("paris").then((value) => {
+          setState(() {
+            widget.meteo = value;
+          })
+        });
+  }
+*/
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -233,26 +247,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ]),
       ],
     ));
-  @override
-  void initState() {
-    super.initState();
-    initialisation();
-  }
 
-  void initialisation() async {
-    getCityWeather("paris").then((value) => {
-          setState(() {
-            widget.meteo = value;
-          })
-        });
-  }
-
-  @override
+    /*@override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text("Météo")),
         body: widget.meteo == null
             ? const Center(child: CircularProgressIndicator())
             : Text(widget.meteo!.name ?? "IN LOAD"));
+  }*/
   }
 }
