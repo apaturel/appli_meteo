@@ -6,20 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-/*@override
-  void initState() {
-    super.initState();
-    initialisation();
-  }
-
-  void initialisation() async {
-    getCityWeather("paris").then((value) => {
-          setState(() {
-            widget.meteo = value;
-          })
-        });
-  }
-*/
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -35,6 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -46,6 +33,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Meteo currentWeather = Meteo(0, "", [], Main(0, 0, 0, 0, 0), null);
+  List<Meteo> listHoursWeather = [];
+
+  @override
+  void initState() {
+    super.initState();
+    initialisation();
+  }
+
+  void initialisation() async {
+    getCityWeather("lyon").then((value) => {
+          setState(() {
+            currentWeather = value;
+          })
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,146 +64,28 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Column(children: [
-          Spacer(),
+          const Spacer(),
           Column(
             children: [
-              Text("Lyon", style: TextStyle(color: Colors.white, fontSize: 30)),
-              Text("26°", style: TextStyle(color: Colors.white, fontSize: 30)),
-              Text(""),
-              Text("Belles éclaircies",
+              Text(currentWeather.name!,
                   style: TextStyle(color: Colors.white, fontSize: 30)),
+              Text("${(currentWeather.main.temp - 273).toStringAsFixed(0)}°",
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              Text(""),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text("Max. 25°",
+                Text(
+                    "Max. ${(currentWeather.main.temp_max - 273).toStringAsFixed(0)}°",
                     style: TextStyle(color: Colors.white, fontSize: 30)),
                 Text(" | ",
                     style: TextStyle(color: Colors.white, fontSize: 30)),
-                Text("Min. 12°",
+                Text(
+                    "Min. ${(currentWeather.main.temp_min - 273).toStringAsFixed(0)}°",
                     style: TextStyle(color: Colors.white, fontSize: 30))
               ])
             ],
           ),
-          Spacer(),
-          Row(
-            children: [
-              Spacer(),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(0, 102, 255, 0.25),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Column(children: [
-                      Spacer(),
-                      Text("Lun", style: TextStyle(color: Colors.white)),
-                      Text("25°", style: TextStyle(color: Colors.white)),
-                      Image(
-                        height: 40,
-                        width: 40,
-                        image: AssetImage("assets/icons/sun.png"),
-                      ),
-                      Spacer()
-                    ]),
-                  )),
-              Spacer(),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(0, 102, 255, 0.25),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Column(children: [
-                      Spacer(),
-                      Text("Lun", style: TextStyle(color: Colors.white)),
-                      Text("25°", style: TextStyle(color: Colors.white)),
-                      Image(
-                        height: 40,
-                        width: 40,
-                        image: AssetImage("assets/icons/sun.png"),
-                      ),
-                      Spacer()
-                    ]),
-                  )),
-              Spacer(),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(0, 102, 255, 0.25),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Column(children: [
-                      Spacer(),
-                      Text("Lun", style: TextStyle(color: Colors.white)),
-                      Text("25°", style: TextStyle(color: Colors.white)),
-                      Image(
-                        height: 40,
-                        width: 40,
-                        image: AssetImage("assets/icons/sun.png"),
-                      ),
-                      Spacer()
-                    ]),
-                  )),
-              Spacer(),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(0, 102, 255, 0.25),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Column(children: [
-                      Spacer(),
-                      Text("Lun", style: TextStyle(color: Colors.white)),
-                      Text("25°", style: TextStyle(color: Colors.white)),
-                      Image(
-                        height: 40,
-                        width: 40,
-                        image: AssetImage("assets/icons/sun.png"),
-                      ),
-                      Spacer()
-                    ]),
-                  )),
-              Spacer(),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(0, 102, 255, 0.25),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Column(children: [
-                      Spacer(),
-                      Text("Lun", style: TextStyle(color: Colors.white)),
-                      Text("25°", style: TextStyle(color: Colors.white)),
-                      Image(
-                        height: 40,
-                        width: 40,
-                        image: AssetImage("assets/icons/sun.png"),
-                      ),
-                      Spacer()
-                    ]),
-                  )),
-              Spacer(),
-            ],
-          ),
-          Spacer(),
+          const Spacer(),
+          const Spacer(),
           Container(
               height: 370,
               width: 350,
@@ -231,15 +117,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Color.fromRGBO(130, 186, 251, 100)),
                     ),
                     Row(
-                      children: [
-                        Text("8h"),
-                        Image(
-                            height: 24,
-                            width: 24,
-                            image: AssetImage("assets/icons/sun.png")),
-                        Text("24°")
-                      ],
-                    )
+                        // children: [
+                        //   Text("${weatherInfo.date.hour.toString()}h"),
+                        //   Image(
+                        //       height: 24,
+                        //       width: 24,
+                        //       image: AssetImage("assets/icons/sun.png")),
+                        //   Text("24°")
+                        // ],
+                        )
                   ],
                 ),
               )),
